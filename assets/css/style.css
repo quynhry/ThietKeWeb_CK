@@ -1,3 +1,40 @@
-* {
-    color: red;
+/* Basic site styles - removed global red rule that broke the UI */
+:root{
+	--primary: #0d6efd;
+	--muted: #6c757d;
 }
+
+body{
+	font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+	margin:0;
+	color: #222;
+	background: #fff;
+}
+
+.header-container{
+	display:flex;
+	align-items:center;
+	gap:16px;
+	padding:12px 16px;
+}
+
+.search-box input{
+	padding:8px 12px;
+	border:1px solid #ddd;
+	border-radius:6px;
+	width:220px;
+}
+
+.search-box .search-dropdown{
+	box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+}
+
+.account-cart{margin-left:auto;display:flex;align-items:center;gap:12px}
+
+.badge{display:inline-block}
+
+/* small responsive tweaks */
+@media (max-width:600px){
+	.search-box input{width:140px}
+}
+
