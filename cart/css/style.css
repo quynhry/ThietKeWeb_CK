@@ -1,0 +1,145 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cart-button {
+    position: relative;
+    width: 240px;
+    height: 60px;
+    border-radius: 8px;
+    color: #fffacd;
+    background: #a12928;
+    overflow: hidden;
+    cursor: pointer;
+    transition: .3s ease;
+}
+
+.cart-button:active {
+    transform: scale(.9);
+}
+
+.cart-button .cart-icon {
+    position: absolute;
+    top: 50%;
+    left: -10%;
+    transform: translate(-50%, -50%);
+    /* Tăng z-index để nó nằm trước icon áo */
+    z-index: 4; 
+    width: 5rem; 
+    height: auto;
+}
+
+.cart-button .shirt-icon {
+    position: absolute;
+    top: -20%;
+    left: 52%;
+    transform: translate(-50%, -50%);
+    /* Giảm z-index để nó nằm sau icon giỏ hàng */
+    z-index: 2; 
+    width: 2rem; 
+    height: auto;
+}
+.cart-button .add-to-cart,
+.cart-button .added {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font: 700 18px 'Open Sans';
+}
+
+.cart-button .added {
+    opacity: 0;
+}
+
+.cart-button.clicked .cart-icon {
+    animation: cart 1.5s ease-in-out forwards;
+    z-index: 2;
+}
+
+.cart-button.clicked .shirt-icon {
+    animation: box 1.5s ease-in-out forwards;
+    z-index: 1;
+}
+
+.cart-button.clicked .add-to-cart {
+    animation: text1 1.5s ease-in-out forwards;
+}
+
+.cart-button.clicked .added {
+    animation: text2 1.5s ease-in-out forwards;
+}
+
+@keyframes cart {
+    0% {
+        left: -10%;
+    }
+
+    40%, 60% {
+        left: 50%;
+    }
+
+    100% {
+        left: 110%;
+    }
+}
+
+@keyframes box {
+    /* 0% - Bắt đầu từ trên (ngoài tầm nhìn), có thể hơi lệch để tạo góc rơi */
+    0% {
+        top: -50%; /* Bắt đầu rất cao */
+        left: 50%;
+        opacity: 0; /* Ẩn đi khi chưa rơi */
+    }
+
+    /* 40% - Icon bắt đầu hiện ra và rơi vào giữa nút */
+    40% { 
+        top: 50%; 
+        left: 50%;
+        opacity: 1; /* Hiện ra khi rơi vào */
+    }
+
+    /* 60% - Icon dừng lại (trên nút) */
+    60% { 
+        top: 50%; 
+        left: 50%;
+        opacity: 1;
+    }
+
+    /* 100% - Icon thoát ra khỏi nút ở phía dưới */
+    100% {
+        top: 150%; /* Rơi hẳn xuống dưới */
+        left: 50%;
+        opacity: 0; /* Ẩn đi khi rơi khỏi nút */
+    }
+}
+
+@keyframes text1 {
+    0% {
+        opacity: 1;
+    }
+
+    20%, 100% {
+        opacity: 0;
+    }
+}
+
+@keyframes text2 {
+    0%, 80% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
